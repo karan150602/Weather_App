@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="header-1">Weather App using NodeJS</h1>
+      </header>
+
+      <fieldset>
+        <form action="/weather" method="get">
+          <input
+            name="city"
+            type="text"
+            class="ghost-input"
+            placeholder="Enter a City"
+            required
+          />
+          <input type="submit" class="ghost-button" value="Get Weather" />
+        </form>
+        <% if (error) { %>
+        <p class="error"><%= error %></p>
+        <% } else if (weather) { %>
+        <div class="card">
+          <!-- Add your weather data here -->
+          <p>
+            <i class="fas fa-thermometer-half"></i>
+            <%=weather.main.temp%>&deg;F
+          </p>
+          <p>
+            <i class="fas fa-cloud"></i>
+            <%=weather.weather[0].main%>
+          </p>
+
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <%=weather.name%>, <%=weather.sys.country%>
+          </p>
+        </div>
+        <% } %>
+      </fieldset>
+    </div>
+  </body>
+</html>
